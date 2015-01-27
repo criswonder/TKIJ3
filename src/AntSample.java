@@ -2,7 +2,7 @@ import java.io.File;
 
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.ProjectHelper;
-import org.junit.Test;
+//import org.junit.Test;
 
 
 public class AntSample {
@@ -21,16 +21,16 @@ public class AntSample {
 
 		
 	}
-	@Test
-	public void testbuildxml(){
-		File buildFile = new File("build.xml");
-		Project p = new Project();
-		p.init();
-		ProjectHelper helper = ProjectHelper.getProjectHelper();
-		helper.parse(p, buildFile);
-//		p.executeTarget(p.getDefaultTarget());
-		p.executeTarget("use");
-		
-	}
+//	@Test
+//	public void testbuildxml(){
+//		File buildFile = new File("build.xml");
+//		Project p = new Project();
+//		p.init();
+//		ProjectHelper helper = ProjectHelper.getProjectHelper();
+//		helper.parse(p, buildFile);
+////		p.executeTarget(p.getDefaultTarget());
+//		p.executeTarget("use");
+//
+//	}
 
 }

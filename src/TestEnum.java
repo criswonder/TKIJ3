@@ -1,11 +1,21 @@
+import java.util.Arrays;
+
 public class TestEnum {
+	public final static String COMMON_WEBVIEW_SHARE_TYPES[] = new String[]{"xxx","yyyy","zzzzz"};
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(HotelType.ECONOMY);
-        System.out.println(HotelType.ECONOMY == HotelType.valueOf("ECONOMY"));
+//        System.out.println(HotelType.ECONOMY);
+//        System.out.println(HotelType.ECONOMY == HotelType.valueOf("ECONOMY"));
+        
+        
+        String array[] = Arrays.copyOfRange(COMMON_WEBVIEW_SHARE_TYPES, 0, COMMON_WEBVIEW_SHARE_TYPES.length-1);
+        
+        for( String str:array){
+        	System.out.println(str);
+        }
     }
 
     public enum HotelType{
