@@ -1,7 +1,7 @@
 package Question1_7;
 
 import CtCILibrary.AssortedMethods;
-
+//1.7 Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.
 public class Question {
 	public static void nullifyRow(int[][] matrix, int row) {
 		for (int j = 0; j < matrix[0].length; j++) {

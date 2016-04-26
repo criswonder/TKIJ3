@@ -5,7 +5,8 @@ import java.util.Hashtable;
 
 import CtCILibrary.AssortedMethods;
 import CtCILibrary.LinkedListNode;
-
+//2.1 Write code to remove duplicates from an unsorted linked list.
+// FOLLOW UP How would you solve this problem if a temporary buffer is not allowed?
 public class Question {
 	public static void deleteDupsA(LinkedListNode n) {
 		HashSet<Integer> set = new HashSet<Integer>();
@@ -44,7 +45,7 @@ public class Question {
 			/* If runner == current, then we didn't find any duplicate 
 			 * elements in the previous for loop.  We then need to 
 			 * increment current.  
-			 * If runner != current, then we must have hit the �break� 
+			 * If runner != current, then we must have hit the �break� 
 			 * condition, in which case we found a dup and current has
 			 * already been incremented.*/
 			if (runner == current) {
@@ -84,8 +85,18 @@ public class Question {
 		}
 		System.out.println(head.printForward());
 		LinkedListNode clone = head.clone();
+		LinkedListNode clone2 = head.clone();
 		deleteDupsA(head);
 		System.out.println(head.printForward());
+
+		//另外一种方法
+		System.out.println(clone.printForward());
 		deleteDupsC(clone);
+		System.out.println(clone.printForward());
+
+		//另外一种方法
+		System.out.println(clone2.printForward());
+		deleteDupsB(clone2);
+		System.out.printf(clone2.printForward());
 	}
 }

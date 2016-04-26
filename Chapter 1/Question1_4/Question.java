@@ -32,7 +32,13 @@ public class Question {
 		for (int i = 0; i < str.length(); i++) {
 			arr[i] = str.charAt(i);
 		}
-		replaceSpaces(arr, str.length());	
+		replaceSpaces(arr, str.length());
 		System.out.println("\"" + AssortedMethods.charArrayToString(arr) + "\"");
+//		String str2 = "abc d e f";
+//		System.out.println(str2.replace(" ","%20"));
+		int a = '\1';
+		int char1 = 'a';
+		System.out.println(char1);
+
 	}
 }

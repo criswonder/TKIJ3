@@ -2,6 +2,7 @@ package Question2_2;
 
 import CtCILibrary.*;
 
+//2.2 Implement an algorithm to find the nth to last element of a singly linked list.
 public class Question {
 
 	public static int nthToLastR1(LinkedListNode head, int n) {
@@ -78,7 +79,7 @@ public class Question {
 	public static void main(String[] args) {
 		LinkedListNode head = AssortedMethods.randomLinkedList(10, 0, 10);
 		System.out.println(head.printForward());
-		int nth = 3;
+		int nth = 6;
 		IntWrapper wr = new IntWrapper();
 		LinkedListNode n = nthToLastR3(head, nth);
 		nthToLastR1(head, nth);
