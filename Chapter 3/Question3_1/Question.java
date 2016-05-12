@@ -2,6 +2,8 @@ package Question3_1;
 
 import java.util.EmptyStackException;
 
+
+//3.1 Describe how you could use a single array to implement three stacks.
 public class Question {
 	static int stackSize = 10;
 	static int [] buffer = new int [stackSize * 3];

@@ -38,8 +38,9 @@ public class QuestionB {
 		push(2, 35);
 		
 		System.out.println("Final Stack: " + AssortedMethods.arrayToString(buffer));
+
 	}
-	
+
 	public static int numberOfElements() {
 		return stacks[0].size + stacks[1].size + stacks[2].size;
 	}
@@ -98,7 +99,7 @@ public class QuestionB {
 		 * and increment the stack pointer */	
 		stack.size++;
 		stack.pointer = nextElement(stack.pointer);		
-		buffer[stack.pointer] = value;	
+		buffer[stack.pointer] = value;
 	}
 
 	static int pop(int stackNum) throws Exception {

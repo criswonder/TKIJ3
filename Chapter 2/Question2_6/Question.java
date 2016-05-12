@@ -2,6 +2,11 @@ package Question2_6;
 
 import CtCILibrary.LinkedListNode;
 
+/**
+ * 2.5 Given a circular linked list, implement an algorithm which returns node at the beginning of the loop.
+ * DEFINITION Circular linked list: A (corrupt) linked list in which a node’s next pointer points to an earlier node,
+ * so as to make a loop in the linked list. EXAMPLE input: A -> B -> C -> D -> E -> C (the same C as earlier) output: C
+ */
 public class Question {
 
 	public static LinkedListNode FindBeginning(LinkedListNode head) {
@@ -12,6 +17,7 @@ public class Question {
 		while (fast != null && fast.next != null) { 
 			slow = slow.next; 
 			fast = fast.next.next;
+//			System.out.println("slow="+slow.hashCode()+",fast="+fast.hashCode());
 			if (slow == fast) {
 				break;
 			}
@@ -36,15 +42,15 @@ public class Question {
 	}
 	
 	public static void main(String[] args) {
-		int list_length = 100;
-		int k = 10;
+		int list_length = 7;
+		int k = 4;
 		
 		// Create linked list
 		LinkedListNode[] nodes = new LinkedListNode[list_length];
 		for (int i = 0; i < list_length; i++) {
 			nodes[i] = new LinkedListNode(i, null, i > 0 ? nodes[i - 1] : null);
 		}
-		
+
 		// Create loop;
 		nodes[list_length - 1].next = nodes[list_length - k];
 		

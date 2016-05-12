@@ -29,6 +29,7 @@ public class QuestionB {
 		for (String[] pair : pairs) {
 			String word1 = pair[0];
 			String word2 = pair[1];
+			//anagram 单词的意思： 相同字母异序词，易位构词，变位词
 			boolean anagram = permutation(word1, word2);
 			System.out.println(word1 + ", " + word2 + ": " + anagram);
 		}

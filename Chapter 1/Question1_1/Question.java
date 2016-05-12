@@ -1,5 +1,7 @@
 package Question1_1;
 
+//1.1 Implement an algorithm to determine if a string has all unique characters.
+// What if you can not use additional data structures?
 public class Question {
 
 	public static boolean isUniqueChars(String str) {
@@ -29,13 +31,14 @@ public class Question {
 	}
 	
 	public static void main(String[] args) {
-		String[] words = {"abcde", "hello", "apple", "kite", "padle"};
-		for (String word : words) {
-			System.out.println(word + ": " + isUniqueChars(word) + " " + isUniqueChars2(word));
-		}
+//		String[] words = {"abcde", "hello", "apple", "kite", "padle"};
+//		for (String word : words) {
+//			System.out.println(word + ": " + isUniqueChars(word) + " " + isUniqueChars2(word));
+//		}
 		
-//		int val = 'a' - 'a';
-//		System.out.println(1 << 32);
+		System.out.println(1 << 31);
+//		System.out.println(1 << 33);
+		System.out.println(Integer.MAX_VALUE);
 	}
 
 }
