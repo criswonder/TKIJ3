@@ -1,5 +1,15 @@
 package Question5_2;
 
+/*
+原文：
+
+Given a (decimal - e.g. 3.72) number that is passed in as a string, print the binary representation.
+If the number can not be represented accurately in binary, print “ERROR”.
+
+译文：
+
+给定一个字符串类型(string)表示的小数，打印出它的二进制表示。 如果这个数无法精确地表示为二进制形式，输出”ERROR”
+* */
 public class Question {
 	public static String printBinary(double num) {
 		if (num >= 1 || num <= 0) {
@@ -24,7 +34,8 @@ public class Question {
 		}
 		return binary.toString();
 	}
-	
+
+	//这个我比较看的懂一点
 	public static String printBinary2(double num) {
 		if (num >= 1 || num <= 0) {
 			return "ERROR";

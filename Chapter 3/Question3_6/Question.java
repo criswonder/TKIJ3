@@ -3,7 +3,8 @@ package Question3_6;
 import java.util.Stack;
 
 import CtCILibrary.AssortedMethods;
-
+//3.6 Write a program to sort a stack in ascending order. You should not make any assumptions about how the stack is
+// implemented. The following are the only functions that should be used to write this program: push | pop | peek | isEmpty.
 public class Question {
 	static int c = 0;
 	public static Stack<Integer> mergesort(Stack<Integer> inStack) {
@@ -70,10 +71,29 @@ public class Question {
 	}
 		
 	public static void main(String [] args) {
-		for (int k = 1; k < 100; k++) {
+//		for (int k = 1; k < 100; k++) {
+//			c = 0;
+//			Stack<Integer> s = new Stack<Integer>();
+//			for (int i = 0; i < 10 * k; i++) {
+//				int r = AssortedMethods.randomIntInRange(0,  1000);
+//				s.push(r);
+//			}
+//			s = mergesort(s);
+//			int last = Integer.MAX_VALUE;
+//			while(!s.isEmpty()) {
+//				int curr = s.pop();
+//				if (curr > last) {
+//					System.out.println("Error: " + last + " " + curr);
+//				}
+//				last = curr;
+//			}
+//			System.out.println(c);
+//		}
+
+		for (int k = 1; k < 2; k++) {
 			c = 0;
 			Stack<Integer> s = new Stack<Integer>();
-			for (int i = 0; i < 10 * k; i++) {
+			for (int i = 0; i < 3 * k; i++) {
 				int r = AssortedMethods.randomIntInRange(0,  1000);
 				s.push(r);
 			}

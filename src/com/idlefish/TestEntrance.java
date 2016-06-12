@@ -1,5 +1,7 @@
 package com.idlefish;
 
+import java.util.HashMap;
+
 /**
  * Created by hongyun on 16/3/11.
  */
@@ -17,5 +19,10 @@ public class TestEntrance {
         String str2 ="abcdef";
         System.out.println(str1.hashCode());
         System.out.println(str2.hashCode());
+
+        HashMap<String,String> maps = new HashMap<String,String>();
+        maps.put("k1","asbc");
+        maps.put("k2","abc");
+        System.out.printf(maps.toString());
     }
 }

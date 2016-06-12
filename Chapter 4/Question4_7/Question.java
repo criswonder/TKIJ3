@@ -2,12 +2,25 @@ package Question4_7;
 
 import CtCILibrary.TreeNode;
 
+/**
+ * 原文：
+
+ Design an algorithm and write code to find the first common ancestor of
+ two nodes in a binary tree. Avoid storing additional nodes in a data structure.
+ NOTE: This is not necessarily a binary search tree.
+
+ 译文：
+
+ 写程序在一棵二叉树中找到两个结点的第一个共同祖先。不允许存储额外的结点。注意： 这里不特指二叉查找树。
+
+
+ */
 public class Question {
 	static int TWO_NODES_FOUND = 2;
 	static int ONE_NODE_FOUND = 1;
 	static int NO_NODES_FOUND = 0;
 		
-	// Checks how many �special� nodes are located under this root
+	// Checks how many �special� nodes are located under this root
 	public static int covers(TreeNode root, TreeNode p, TreeNode q) {
 		int ret = NO_NODES_FOUND;
 		if (root == null) return ret;

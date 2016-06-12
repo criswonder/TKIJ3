@@ -5,6 +5,7 @@ import java.util.Queue;
 
 import CtCILibrary.AssortedMethods;
 
+//3.5 Implement a MyQueue class which implements a queue using two stacks.
 public class Question {
 	public static void main(String[] args) {
 		MyQueue<Integer> my_queue = new MyQueue<Integer>();	
