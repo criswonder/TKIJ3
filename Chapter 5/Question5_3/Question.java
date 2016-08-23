@@ -237,11 +237,11 @@ public class Question {
 			int p1 = getPrevSlow(i);
 			int p2 = getPrev(i);
 			int p3 = getPrevArith(i);
-			
+
 			int n1 = getNextSlow(i);
 			int n2 = getNext(i);
 			int n3 = getNextArith(i);
-			
+
 			if (p1 != p2 || p2 != p3 || n1 != n2 || n2 != n3) {
 				binPrint(i);
 				binPrint(p1);
@@ -251,9 +251,19 @@ public class Question {
 				binPrint(n2);
 				binPrint(n3);
 				System.out.println("");
-			}			
+			}
 		}
 		System.out.println("Done!");
+
+
+		//我的测试代码
+//		binPrint(0x55555555);
+//		binPrint(0x33333333);
+//		binPrint(0x0f0f0f0f);
+//		binPrint(0x00ff00ff);
+//		binPrint(0x0000ffff);
+//		binPrint(-2);
+//		System.out.println("1010101010101010101010101010101".length());
 	}
 
 }
