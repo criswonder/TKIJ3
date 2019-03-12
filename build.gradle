@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url "http://mvnrepo.alibaba-inc.com/mvn/repository"
+        }
+    }
+    dependencies {
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://mvnrepo.alibaba-inc.com/mvn/repository"
+    }
+}
+
+apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/tink_in_java',
+                       'src/ctci',
+                       'src/wangzheng',
+                       'src/java_concurrency_in_practice'
+            ]
+        }
+        resources {
+            srcDirs = ['src/resources']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'lib', include: '*.jar')
+
+    testCompile 'junit:junit:' + "4.12"
+    testCompile 'org.mockito:mockito-all:' + "1.10.19"
+    testCompile 'org.hamcrest:hamcrest-all:' + "1.3"
+}
+
