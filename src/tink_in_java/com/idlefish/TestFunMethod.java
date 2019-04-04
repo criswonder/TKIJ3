@@ -23,8 +23,18 @@ public class TestFunMethod {
                 System.out.println(sumTarget[i]);
             }
         }
-
     }
+
+    /**
+     *[1,2,3,4,5,6,2,3,9] [7]
+     *1,[2,3,4,5,6,2,3,9] [6]
+     *1,2,[3,4,5,6,2,3,9] [4]
+     *1,2,3,[4,5,6,2,3,9] [1]
+     */
+    public static int[] findTargets(int[] inputs,int target){
+        return null;
+    }
+
 
     public static int[] findSumTarget(int[] inputArray, int target) {
         if (inputArray == null || inputArray.length == 0) {
