@@ -23,6 +23,7 @@ sourceSets {
         java {
             srcDirs = ['src/tink_in_java',
                        'src/ctci',
+                       'src/leetcode',
                        'src/wangzheng',
                        'src/java_concurrency_in_practice'
             ]
