@@ -43,7 +43,16 @@ public class Pattern {
 
 
         //可以逐步调试一下，是在ti=3的时候，pattern和text都到末尾了才匹配上的
-        pattern = new Pattern(new char[]{'b'}, 1);
-        System.out.println(pattern.match(new char[]{'a','b','c'},3));
+        pattern = new Pattern(new char[]{'*', 'c'}, 2);
+        System.out.println(pattern.match(new char[]{'a', 'b', 'c'}, 3));
+
+        pattern = new Pattern(new char[]{'*', 'c', '*'}, 3);
+        System.out.println(pattern.match(new char[]{'a', 'b', 'c', 'd'}, 4));
+
+        pattern = new Pattern(new char[]{'*', '?', '?'}, 3);
+        System.out.println(pattern.match(new char[]{'a', 'b', 'c', 'd'}, 4));
+
+        pattern = new Pattern(new char[]{'*', '?', 'f'}, 3);
+        System.out.println(pattern.match(new char[]{'a', 'b', 'c', 'd'}, 4));
     }
 }

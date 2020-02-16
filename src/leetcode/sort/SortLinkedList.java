@@ -1,5 +1,8 @@
 package sort;
 
+/**
+ * 使用插入排序对一个链表进行排序
+ */
 public class SortLinkedList {
     public static class ListNode {
         int val;
