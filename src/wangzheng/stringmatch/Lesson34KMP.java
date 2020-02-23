@@ -1,6 +1,6 @@
 package stringmatch;
 
-public class Lesson34 {
+public class Lesson34KMP {
 
     public static void main(String[] args) {
         String mainStr = "ababaeabac";
@@ -19,8 +19,13 @@ public class Lesson34 {
         int[] next = new int[m];
         next[0] = -1;
         int k = -1;
+        // i = 1, k = -1
+        // b[0] != b[1],
+        // next[1] = -1
+        //
         // i = 2, k = -1
-        // b[0] == b[2], ++k, k = 0; next[2] = 0
+        // b[0] == b[2], ++k, k = 0;
+        // next[2] = 0
         //
         // i = 3, k = 0
         // b[1] == b[3], ++k, k=1
@@ -45,7 +50,6 @@ public class Lesson34 {
         }
         return next;
     }
-
 
     // a, b分别是主串和模式串；n, m分别是主串和模式串的长度。
     public static int kmp(char[] a, int n, char[] b, int m) {
