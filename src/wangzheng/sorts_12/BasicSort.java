@@ -2,16 +2,38 @@ package sorts_12;
 
 public class BasicSort {
     public static void main(String[] args) {
-        int[] testArray = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
+//        int[] testArray = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
+        int[] testArray = {90, 88, 81, 68, 40, 33, 33, 31, 22, 9};
 
 
-        PrintUtils.printArray(testArray);
-        insertSort(testArray, testArray.length - 1);
+//        PrintUtils.printArray(testArray);
+//        insertSort(testArray, testArray.length - 1);
 //        bubbleSort(testArray, testArray.length - 1);
+//        insertSort2(testArray);
+//        insertSort3(testArray);
+        bubbleSortAndy(testArray, testArray.length);
         PrintUtils.printArray(testArray);
-
 //        int[] testArray2 = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
 //        PrintUtils.printArray(testArray2);
+    }
+
+    public static void insertSort3(int[] a) {
+        if (a == null || a.length <= 1) {
+            return;
+        }
+
+        for (int i = 1; i < a.length; i++) {
+            int value = a[i];
+            int j = i - 1;
+            for (; j >= 0; j--) {
+                if (a[j] > value) {
+                    a[j + 1] = a[j];
+                } else {
+                    break;
+                }
+            }
+            a[j + 1] = value;
+        }
     }
 
     /**
@@ -57,14 +79,25 @@ public class BasicSort {
     }
 
     public static void bubbleSortAndy(int[] a, int n) {
-//        int j = 0; //j 0->n-1
-        for (int j = 0; j < n; j++) {
-            for (int i = 0; i < n - j; i++) {
-                if (a[i] > a[i + 1]) {
-                    int tmp = a[i + 1];
-                    a[i + 1] = a[i];
-                    a[i] = tmp;
+        if (n <= 1) {
+            return;
+        }
+
+        for (int i = 0; i < n - 2; i++) {
+            boolean hasElementSwitch = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (a[j] > a[j + 1]) {
+                    int tmp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = tmp;
+                    hasElementSwitch = true;
                 }
+            }
+
+            if (!hasElementSwitch) {
+                System.out.println("i=" + i);
+                break;
             }
         }
     }
@@ -77,10 +110,10 @@ public class BasicSort {
             // 提前退出冒泡循环的标志位
             boolean flag = false;
             for (int j = 0; j < n - i - 1; ++j) {
-                if (a[j] > a[j+1]) { // 交换
+                if (a[j] > a[j + 1]) { // 交换
                     int tmp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = tmp;
+                    a[j] = a[j + 1];
+                    a[j + 1] = tmp;
                     flag = true;  // 表示有数据交换
                 }
             }
