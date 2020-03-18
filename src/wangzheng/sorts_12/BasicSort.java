@@ -83,7 +83,9 @@ public class BasicSort {
             return;
         }
 
-        for (int i = 0; i < n - 2; i++) {
+        //这里i小于n-1 或者n，关系不大。当小于n的时候，i等于n-1的时候。第二层for循环的判断条件是j<n-(n-1)-1
+        //也就是j<0, for循环不会执行
+        for (int i = 0; i < n - 1; i++) {
             boolean hasElementSwitch = false;
 
             for (int j = 0; j < n - i - 1; j++) {
