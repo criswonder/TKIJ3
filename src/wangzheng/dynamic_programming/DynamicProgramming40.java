@@ -177,16 +177,16 @@ public class DynamicProgramming40 {
 
     public static void main(String[] args) {
         //test version1
-//        Version1 nest = new Version1();
-//        int maxWeight = nest.knapsack(nest.weight, nest.n, nest.w);
-//        System.out.println("maxWeight=" + maxWeight);
-//        maxWeight = nest.knapsack(new int[]{2, 5, 7, 2}, 4, 10);
-//        System.out.println("maxWeight=" + maxWeight);
+        Version1 nest = new Version1();
+        int maxWeight = nest.knapsack(nest.weight, nest.n, nest.w);
+        System.out.println("maxWeight=" + maxWeight);
+        maxWeight = nest.knapsack(new int[]{2, 5, 7, 2}, 4, 10);
+        System.out.println("maxWeight=" + maxWeight);
 //
         //test version2
-        int[] items = new int[]{2, 3, 4, 8, 10, 8, 8};
-        Version2 version2 = new Version2();
-        version2.double11advance(items, items.length, 19);
+//        int[] items = new int[]{2, 3, 4, 8, 10, 8, 8};
+//        Version2 version2 = new Version2();
+//        version2.double11advance(items, items.length, 19);
 
 //        int[] weight = {2, 2, 4, 6, 3};  // 物品的重量
 //        int[] value = {3, 4, 8, 9, 6}; // 物品的价值

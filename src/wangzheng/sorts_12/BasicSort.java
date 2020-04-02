@@ -78,6 +78,12 @@ public class BasicSort {
 //        }
     }
 
+    /**
+     * 1 每循环一次，操作的数据长度减一
+     * 2 没有数据交换后，退出循环，真个数据有序了
+     * @param a
+     * @param n
+     */
     public static void bubbleSortAndy(int[] a, int n) {
         if (n <= 1) {
             return;
@@ -90,9 +96,18 @@ public class BasicSort {
 
             for (int j = 0; j < n - i - 1; j++) {
                 if (a[j] > a[j + 1]) {
-                    int tmp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = tmp;
+//                    int tmp = a[j];
+//                    a[j] = a[j + 1];
+//                    a[j + 1] = tmp;
+
+//                    a[j] = a[j + 1] ^ a[j];
+//                    a[j + 1] = a[j] ^ a[j + 1];
+//                    a[j] = a[j] ^ a[j + 1];
+
+                    a[j] = a[j] * a[j + 1];
+                    a[j + 1] = a[j] / a[j + 1];
+                    a[j] = a[j] / a[j + 1];
+
                     hasElementSwitch = true;
                 }
             }
