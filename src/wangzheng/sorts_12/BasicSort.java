@@ -1,12 +1,14 @@
 package sorts_12;
 
+import utils.PrintUtils;
+
 public class BasicSort {
     public static void main(String[] args) {
 //        int[] testArray = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
         int[] testArray = {90, 88, 81, 68, 40, 33, 33, 31, 22, 9};
 
 
-//        PrintUtils.printArray(testArray);
+//        utils.PrintUtils.printArray(testArray);
 //        insertSort(testArray, testArray.length - 1);
 //        bubbleSort(testArray, testArray.length - 1);
 //        insertSort2(testArray);
@@ -14,7 +16,7 @@ public class BasicSort {
         bubbleSortAndy(testArray, testArray.length);
         PrintUtils.printArray(testArray);
 //        int[] testArray2 = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
-//        PrintUtils.printArray(testArray2);
+//        utils.PrintUtils.printArray(testArray2);
     }
 
     public static void insertSort3(int[] a) {

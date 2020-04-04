@@ -1,5 +1,9 @@
 package dynamic_programming;
 
+import utils.PrintUtils;
+
+import java.util.*;
+
 public class DynamicProgramming40 {
 
 
@@ -9,6 +13,26 @@ public class DynamicProgramming40 {
         public int n = 5; // 物品个数
         public int w = 9; // 背包承受的最大重量
         public boolean[][] mem = new boolean[5][10]; // 备忘录,默认值 false
+        boolean[][] states;
+
+        /**
+         * 回溯算法，没有使用备忘录
+         *
+         * @param i
+         * @param cw
+         */
+        public void fNoMemo(int i, int cw) {
+            if (i == n || cw > w) {
+                if (cw > maxW) maxW = cw;
+                System.out.println(String.format("i=%d,cw=%d,maxW=%d", i, cw, maxW));
+                return;
+            }
+
+            if (weight[i] + cw <= w) {
+                fNoMemo(i + 1, cw + weight[i]);
+            }
+            fNoMemo(i + 1, cw);
+        }
 
         public void f(int i, int cw) { // 调用 f(0, 0)
             if (cw == w || i == n) { // cw==w 表示装满了,i==n 表示物品都考察完了
@@ -25,7 +49,7 @@ public class DynamicProgramming40 {
 
         //weight: 物品重量,n: 物品个数,w: 背包可承载重量
         public int knapsack(int[] weight, int n, int w) {
-            boolean[][] states = new boolean[n][w + 1]; // 默认值 false
+            states = new boolean[n][w + 1]; // 默认值 false
 
             // 第一行的数据要特殊处理,可以利用哨兵优化
             states[0][0] = true;
@@ -176,12 +200,25 @@ public class DynamicProgramming40 {
 
 
     public static void main(String[] args) {
+        //测试回溯算法，没有使用备忘录的
+//        Version1 noMemo = new Version1();
+//        noMemo.fNoMemo(0, 0);
+//        System.out.println("result = " + noMemo.maxW);
+
+        printSelectedItems();
+
+        //打印出选择了哪些数字
+//        Version1 version1 = new Version1();
+//        version1.f(0, 0);
+//        System.out.println(version1.maxW);
+//        PrintUtils.printMatrix(version1.mem);
+
         //test version1
-        Version1 nest = new Version1();
-        int maxWeight = nest.knapsack(nest.weight, nest.n, nest.w);
-        System.out.println("maxWeight=" + maxWeight);
-        maxWeight = nest.knapsack(new int[]{2, 5, 7, 2}, 4, 10);
-        System.out.println("maxWeight=" + maxWeight);
+//        Version1 nest = new Version1();
+//        int maxWeight = nest.knapsack(nest.weight, nest.n, nest.w);
+//        System.out.println("maxWeight=" + maxWeight);
+//        maxWeight = nest.knapsack(new int[]{2, 5, 7, 2}, 4, 10);
+//        System.out.println("maxWeight=" + maxWeight);
 //
         //test version2
 //        int[] items = new int[]{2, 3, 4, 8, 10, 8, 8};
@@ -206,6 +243,61 @@ public class DynamicProgramming40 {
 //        resultValue = Version2.knapsack4(weight, value, n, w);
 //        System.out.println("resultValue=" + resultValue);
 
+    }
+
+    /**
+     * 打印出满足条件的情况时选择了哪些数字
+     */
+    private static void printSelectedItems() {
+        Version1 data = new Version1();
+//        int[] inputNumbers = {4, 3, 5, 8, 9, 3, 44, 3, 9};
+        int[] inputNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int n = inputNumbers.length;
+        int maxWeight = 24;
+        int knapsack = data.knapsack(inputNumbers, n, maxWeight);
+        System.out.println("result = " + knapsack);
+        boolean[][] states = data.states;
+//        PrintUtils.printMatrix(states);
+
+        //找到最大的总重量的坐标
+        int resultI = 0, resultJ = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            boolean find = false;
+            for (int j = maxWeight; j > 0; j--) {
+                if (states[i][j]) {
+                    resultI = i;
+                    resultJ = j;
+                    find = true;
+                    break;
+                }
+            }
+            if (find) break;
+        }
+
+        //循环找出选择了哪些数字
+        LinkedList<Integer> resultList = new LinkedList<>();
+        int tmpI = resultI, tmpJ = resultJ;
+        while (tmpI > 0) {
+            if (states[tmpI - 1][resultJ]) {
+                //没有选择
+            } else {
+                int cWeight = tmpJ - inputNumbers[tmpI];
+                if (cWeight >= 0 && states[tmpI - 1][cWeight]) {
+                    resultList.add(resultList.size(), inputNumbers[tmpI]);
+                    tmpJ = cWeight;
+                }
+            }
+            tmpI--;
+        }
+        if (tmpJ > 0) {
+            resultList.add(resultList.size(), inputNumbers[tmpI]);
+        }
+
+        //打印出选择了哪些数字
+        Iterator<Integer> listIterator = resultList.descendingIterator();
+        while (listIterator.hasNext()) {
+            System.out.println(listIterator.next());
+        }
     }
 
 }

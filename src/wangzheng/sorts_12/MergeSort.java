@@ -1,5 +1,7 @@
 package sorts_12;
 
+import utils.PrintUtils;
+
 /**
  * Created by wangzheng on 2018/10/16.
  */
