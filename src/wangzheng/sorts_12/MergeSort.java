@@ -14,58 +14,45 @@ public class MergeSort {
         PrintUtils.printArray(testArray);
 
         int[] testArray2 = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
-        mergeSortAndy(testArray2, testArray2.length);
+        mergeSortInternallyAndy(testArray2, 0, testArray2.length - 1);
 
         PrintUtils.printArray(testArray2);
     }
 
-    public static void mergeSortAndy(int[] a, int n) {
-        mergeSortInternallyAndy(a, 0, n - 1);
-    }
 
     private static void mergeSortInternallyAndy(int[] a, int p, int r) {
         if (p >= r) {
             return;
         }
-
         int q = p + (r - p) / 2;
-
         mergeSortInternallyAndy(a, p, q);
         mergeSortInternallyAndy(a, q + 1, r);
-
         mergeAndy(a, p, q, r);
     }
 
     private static void mergeAndy(int[] a, int p, int q, int r) {
-//        System.out.println(a.length+",p="+p+",q="+q+",r="+r);
-        int i = p,j = q+1, k =0;
+        int i = p;
+        int j = q + 1;
         int[] tmp = new int[r - p + 1];
-
+        int k = 0;
         while (i <= q && j <= r) {
-            if(a[i] < a[j]){
+            if (a[i] < a[j]) {
                 tmp[k++] = a[i++];
-            }else{
+            } else {
                 tmp[k++] = a[j++];
             }
         }
 
-        int start = i,end = q;
-        if (j <= r) {
-            start = j;
-            end = r;
+        while (i <= q) {
+            tmp[k++] = a[i++];
         }
 
-        while (start <= end) {
-            tmp[k++] = a[start++];
+        while (j <= r) {
+            tmp[k++] = a[j++];
         }
 
-        for (int l = 0; l < r-p+1; l++) {
-//            System.out.println(a.length+","+tmp.length+",index="+l);
-            try {
-                a[p + l] = tmp[l];
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        for (int l = 0; l < r - p + 1; l++) {
+            a[p + l] = tmp[l];
         }
     }
 

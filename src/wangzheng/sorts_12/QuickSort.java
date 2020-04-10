@@ -1,9 +1,18 @@
 package sorts_12;
 
+import utils.PrintUtils;
+
 /**
  * Created by wangzheng on 2018/10/16.
  */
 public class QuickSort {
+    public static void main(String[] args) {
+        int[] testArray = new int[]{6, 11, 3, 9, 8, 2, 9, 3, 2, 5, 7};
+//        QuickSort.quickSort(testArray,testArray.length);
+        QuickSort.quickSortAndy(testArray, testArray.length);
+        PrintUtils.printArray(testArray);
+    }
+
 
     // 快速排序，a是数组，n表示数组的大小
     public static void quickSort(int[] a, int n) {
@@ -48,33 +57,34 @@ public class QuickSort {
         quickSortInternallyAndy(array, 0, n - 1);
     }
 
-    private static void quickSortInternallyAndy(int[] array, int i, int j) {
-        if (i >= j) {
+    private static void quickSortInternallyAndy(int[] array, int p, int r) {
+        if (p >= r) {
             return;
         }
 
-        int m = partitionAndy(array, i, j);
-
-        quickSortInternallyAndy(array, i, m - 1);
-        quickSortInternallyAndy(array, m + 1, j);
+        int pivot = partition(array, p, r);
+        quickSortInternallyAndy(array, p, pivot - 1);
+        quickSortInternallyAndy(array, pivot + 1, r);
     }
 
-    private static int partitionAndy(int[] array, int i, int j) {
-        int pivot = array[j];
-        int i1 = i;
-        for (int j1 = i; j1 < j; j1++) {
-            if (array[j1] < pivot) {
-                //swap j1 and i1
-                int temp = array[i1];
-                array[i1] = array[j1];
-                array[j1] = temp;
-                i1++;
+    private static int partitionAndy(int[] a, int p, int r) {
+        int i = p;
+        int pivot = a[r];
+        for (int j = p; j < r; j++) {
+            if (a[j] < pivot) {
+                if (i == j) {
+                    i++;
+                } else {
+                    int tmp = a[i];
+                    a[i++] = a[j];
+                    a[j] = tmp;
+                }
             }
         }
 
-        int tmp = array[i1];
-        array[i1] = pivot;
-        array[j] = tmp;
-        return i1;
+        int tmp = a[i];
+        a[i] = pivot;
+        a[r] = tmp;
+        return i;
     }
 }
