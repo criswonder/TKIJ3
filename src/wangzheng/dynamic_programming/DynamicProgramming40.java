@@ -250,16 +250,17 @@ public class DynamicProgramming40 {
      */
     private static void printSelectedItems() {
         Version1 data = new Version1();
-//        int[] inputNumbers = {4, 3, 5, 8, 9, 3, 44, 3, 9};
-        int[] inputNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int n = inputNumbers.length;
-        int maxWeight = 24;
-        int knapsack = data.knapsack(inputNumbers, n, maxWeight);
+//        int[] a = {4, 3, 5, 8, 9, 3, 44, 3, 9};
+        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int maxWeight = 32;
+        int n = a.length;
+        int knapsack = data.knapsack(a, n, maxWeight);
         System.out.println("result = " + knapsack);
         boolean[][] states = data.states;
 //        PrintUtils.printMatrix(states);
 
-        //找到最大的总重量的坐标
+        //找到最大的总重量的坐标, resultI是行index, resultJ是列index
         int resultI = 0, resultJ = 0;
         for (int i = n - 1; i >= 0; i--) {
             boolean find = false;
@@ -279,18 +280,18 @@ public class DynamicProgramming40 {
         int tmpI = resultI, tmpJ = resultJ;
         while (tmpI > 0) {
             if (states[tmpI - 1][resultJ]) {
-                //没有选择
+                //没有选择a[i]
             } else {
-                int cWeight = tmpJ - inputNumbers[tmpI];
+                int cWeight = tmpJ - a[tmpI];
                 if (cWeight >= 0 && states[tmpI - 1][cWeight]) {
-                    resultList.add(resultList.size(), inputNumbers[tmpI]);
+                    resultList.add(resultList.size(), a[tmpI]);
                     tmpJ = cWeight;
                 }
             }
             tmpI--;
         }
         if (tmpJ > 0) {
-            resultList.add(resultList.size(), inputNumbers[tmpI]);
+            resultList.add(resultList.size(), a[tmpI]);
         }
 
         //打印出选择了哪些数字

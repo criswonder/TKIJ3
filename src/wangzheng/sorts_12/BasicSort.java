@@ -5,37 +5,19 @@ import utils.PrintUtils;
 public class BasicSort {
     public static void main(String[] args) {
 //        int[] testArray = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
-        int[] testArray = {90, 88, 81, 68, 40, 33, 33, 31, 22, 9};
+        int[] testArray = {90, 88, 81, 68, 40, 33, 33, 31, 22, 9, 22};
 
 
 //        utils.PrintUtils.printArray(testArray);
-//        insertSort(testArray, testArray.length - 1);
+        insertSort(testArray, testArray.length);
+//        insertionSort(testArray, testArray.length);
 //        bubbleSort(testArray, testArray.length - 1);
 //        insertSort2(testArray);
 //        insertSort3(testArray);
-        bubbleSortAndy(testArray, testArray.length);
+//        bubbleSort2(testArray, testArray.length);
         PrintUtils.printArray(testArray);
 //        int[] testArray2 = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
 //        utils.PrintUtils.printArray(testArray2);
-    }
-
-    public static void insertSort3(int[] a) {
-        if (a == null || a.length <= 1) {
-            return;
-        }
-
-        for (int i = 1; i < a.length; i++) {
-            int value = a[i];
-            int j = i - 1;
-            for (; j >= 0; j--) {
-                if (a[j] > value) {
-                    a[j + 1] = a[j];
-                } else {
-                    break;
-                }
-            }
-            a[j + 1] = value;
-        }
     }
 
     /**
@@ -47,42 +29,43 @@ public class BasicSort {
      * @param n
      */
     public static void insertSort(int[] a, int n) {
-        if (n <= 1) return;
-
-        for (int i = 1; i <= n; i++) {
-            int value = a[i];
+        for (int i = 1; i < n; i++) {
             int j = i - 1;
+            int insert = a[i];
             for (; j >= 0; j--) {
-                if (value < a[j]) {//这里一定不要用a[i] 因为这个地方会被覆盖，例如j=i-1的时候 a[j+1]=a[j]这句就会覆盖这个值
-                    a[j + 1] = a[j];
-                } else {
+                if (a[j] < insert) {
                     break;
+                }else{
+                    a[j + 1] = a[j];
                 }
             }
 
-            a[j + 1] = value;
+            a[j+1] = insert;
         }
+    }
 
-//        if (n <= 1) return;
-//
-//        for (int i = 1; i < n; ++i) {
-//            int value = a[i];
-//            int j = i - 1;
-//            // 查找插入的位置
-//            for (; j >= 0; --j) {
-//                if (a[j] > value) {
-//                    a[j + 1] = a[j];  // 数据移动
-//                } else {
-//                    break;
-//                }
-//            }
-//            a[j + 1] = value; // 插入数据
-//        }
+    public static void bubbleSort2(int[] a, int n) {
+        for (int i = 0; i < n; i++) {
+            boolean flag = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (a[j] > a[j + 1]) {
+                    int tmp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = tmp;
+                    flag = true;
+                }
+            }
+
+            if (!flag) {
+                break;
+            }
+        }
     }
 
     /**
      * 1 每循环一次，操作的数据长度减一
      * 2 没有数据交换后，退出循环，真个数据有序了
+     *
      * @param a
      * @param n
      */
@@ -102,9 +85,16 @@ public class BasicSort {
 //                    a[j] = a[j + 1];
 //                    a[j + 1] = tmp;
 
+                    //位的异或运算可以参考
+                    //a     [0,1,1,0,1]
+                    //b     [1,0,1,0,1]
+                    //a^b   [1,1,0,0,0]
+                    //a^b^b [0,1,1,0,1]
+
 //                    a[j] = a[j + 1] ^ a[j];
 //                    a[j + 1] = a[j] ^ a[j + 1];
 //                    a[j] = a[j] ^ a[j + 1];
+
 
                     a[j] = a[j] * a[j + 1];
                     a[j + 1] = a[j] / a[j + 1];
@@ -122,7 +112,7 @@ public class BasicSort {
     }
 
     // 冒泡排序，a 表示数组，n 表示数组大小
-    public void bubbleSort(int[] a, int n) {
+    public static void bubbleSort(int[] a, int n) {
         if (n <= 1) return;
 
         for (int i = 0; i < n; ++i) {
@@ -142,7 +132,7 @@ public class BasicSort {
 
 
     // 插入排序，a 表示数组，n 表示数组大小
-    public void insertionSort(int[] a, int n) {
+    public static void insertionSort(int[] a, int n) {
         if (n <= 1) return;
 
         for (int i = 1; i < n; ++i) {

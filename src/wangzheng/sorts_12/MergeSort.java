@@ -21,9 +21,7 @@ public class MergeSort {
 
 
     private static void mergeSortInternallyAndy(int[] a, int p, int r) {
-        if (p >= r) {
-            return;
-        }
+        if (p >= r) return;
         int q = p + (r - p) / 2;
         mergeSortInternallyAndy(a, p, q);
         mergeSortInternallyAndy(a, q + 1, r);
@@ -38,19 +36,16 @@ public class MergeSort {
         while (i <= q && j <= r) {
             if (a[i] < a[j]) {
                 tmp[k++] = a[i++];
-            } else {
+            }else{
                 tmp[k++] = a[j++];
             }
         }
 
-        while (i <= q) {
+        if (i <= q) {
             tmp[k++] = a[i++];
         }
 
-        while (j <= r) {
-            tmp[k++] = a[j++];
-        }
-
+        if(j<=r) tmp[k++] = a[j++];
         for (int l = 0; l < r - p + 1; l++) {
             a[p + l] = tmp[l];
         }
