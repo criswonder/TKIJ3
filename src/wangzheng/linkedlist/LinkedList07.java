@@ -14,7 +14,7 @@ import com.sun.tools.javac.comp.Flow;
  * <p>
  * Author: Zheng
  */
-public class LinkedList {
+public class LinkedList07 {
     public static class Node {
         private int data;
         private Node next;

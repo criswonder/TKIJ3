@@ -1,10 +1,10 @@
-package search_15;
+package binarysearch;
 
-public class BinarySearch {
+public class BinarySearch15 {
     public static void main(String[] args) {
         int[] arr = new int[]{1, 2, 4, 5, 7, 8, 9, 20, 32};
         int index = binarySearch(arr, arr.length, 8);
-        System.out.println("index=" + index);
+        System.out.println("index=" + index + ",value=" + arr[index]);
 
         index = binarySearch(arr, arr.length, 9);
         System.out.println("index=" + index);
