@@ -18,6 +18,7 @@ public class Search {
         graph.addEdge(6,7);
 
         graph.bfs(0,7);
+//        graph.dfs(0,7);
     }
 }
 
@@ -96,8 +97,12 @@ class Graph { // 无向图
 
     /**
      *
-     *prev: -1,0,1,0,1,4,4,-1
-     *       0,1,2,3,4,5,6, 7
+     *prev: -1,0,1,0,1,2,4,5
+     *       0-1-2
+     *       | | |
+     *       3-4-5
+     *         | |
+     *         6-7
      */
     private void print(int[] prev, int s, int t) { // 递归打印 s->t 的路径
         if (prev[t] != -1 && t != s) {

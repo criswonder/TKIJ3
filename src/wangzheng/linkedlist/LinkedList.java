@@ -43,13 +43,30 @@ public class LinkedList {
     }
 
     public static void main(String args[]) {
-        //test reverse method
+//        reverseList();
+//
+//        testMergeList();
+//
+//        testCircleList();
+
+//        deleteLinkedListKthNode();
+
+        findMiddleNode();
+    }
+
+    private static void testCircleList() {
+        System.out.println("检测链表中的环：");
+        Node circleList = createCircleList();
+//        printAll(circleList);
+//        System.out.println(checkCircle(circleList));
+//        System.out.println(checkCircle(listA));
+//
+//        System.out.println(checkCircleListAndy(circleList));
+//        System.out.println(checkCircleListAndy(listA));
+    }
+
+    private static void testMergeList() {
         Node listA = createListA();
-        printAll(listA);
-
-        System.out.println("反转链表的结果：");
-        printAll(reverseListAndy(listA));
-
         Node listB = createList();
         printAll(listA);
         printAll(listB);
@@ -58,32 +75,35 @@ public class LinkedList {
         System.out.println("合并有序链表listA listB：");
         Node mergedList = mergeListAndy(listA, listB);
         printAll(mergedList);
+    }
 
-        System.out.println("检测链表中的环：");
-        Node circleList = createCircleList();
-//        printAll(circleList);
-        System.out.println(checkCircle(circleList));
-        System.out.println(checkCircle(listA));
+    private static void reverseList() {
+        //test reverse method
+        Node listA = createListA();
+//        printAll(listA);
+//
+//        System.out.println("反转链表的结果：");
+//        printAll(reverseListAndy(listA));
+    }
 
-        System.out.println(checkCircleListAndy(circleList));
-        System.out.println(checkCircleListAndy(listA));
+    private static void findMiddleNode() {
+//        Node listA = createListA();
+//        printAll(listA);
+//        System.out.println("查找链表的中间节点：");
+//        Node middleNode = findMiddleNode(listA);
+//        System.out.println(middleNode.data);
+//
+//        middleNode = findMiddleNodeAndy(listA);
+//        System.out.println(middleNode.data);
 
-        System.out.println("删除倒数第K个节点：");
-        Node node = deleteLastKth(mergedList, 3);
-        printAll(node);
-
-        Node node2 = deleteLastKthAndy(mergedList, 3);
-        printAll(node2);
-
-
+        Node listEven = createListAEven();
+        printAll(listEven);
         System.out.println("查找链表的中间节点：");
-        Node middleNode = findMiddleNode(node);
+        Node middleNode = findMiddleNode(listEven);
         System.out.println(middleNode.data);
 
-        middleNode = findMiddleNodeAndy(node);
+        middleNode = findMiddleNodeAndy(listEven);
         System.out.println(middleNode.data);
-
-//        printAll(reverse(n1));
     }
 
     public static Node createList() {
@@ -108,6 +128,24 @@ public class LinkedList {
         return n3;
     }
 
+    /**
+     * Even or odd
+     *
+     * @return
+     */
+    public static Node createListAEven() {
+        Node n10 = new Node(10, null);
+        Node n9 = new Node(9, n10);
+        Node n8 = new Node(8, n9);
+        Node n7 = new Node(7, n8);
+        Node n6 = new Node(6, n7);
+        Node n5 = new Node(5, n6);
+        Node n4 = new Node(4, n5);
+        Node n3 = new Node(3, n4);
+
+        return n3;
+    }
+
     public static Node createCircleList() {
         Node node = createNode(9);
         Node n8 = new Node(8, node);
@@ -122,89 +160,110 @@ public class LinkedList {
         return n3;
     }
 
+    private static void deleteLinkedListKthNode() {
+        Node list = createList();
+        int k = 31;
+//        System.out.println(String.format("删除倒数第%d个节点：", k));
+//        printAll(list);
+//        deleteLastKthAndy(list, k);
+//        System.out.println(String.format("删除后："));
+//        printAll(list);
 
-    public static Node deleteLastKthAndy(Node list,int k) {
-        if(list==null) return null;
-        int i = 1;
+        k = 7;
+        System.out.println(String.format("删除倒数第%d个节点：", k));
+        printAll(list);
+        Node node = deleteLastKthAndy(list, k);
+        System.out.println(String.format("删除后："));
+        printAll(node);
+    }
+
+    public static Node deleteLastKthAndy(Node list, int k) {
+        if (list == null) return null;
         Node fast = list;
-        while (fast.next != null && i < k) {
+        int i = 0;
+        while (fast.next != null && i < k - 1) {
             fast = fast.next;
             i++;
         }
 
-        if (fast == null) {
+        if (i < k - 2) {
+            System.out.println(String.format("删除的k=%d值，大于链表的长度", k));
             return list;
         }
 
         Node slow = list;
-        Node previous = null;
-        //n - (n-k+1) = k-1
+        Node pre = null;
+        Node head;
         while (fast.next != null) {
             fast = fast.next;
-            previous = slow;
+            pre = slow;
             slow = slow.next;
         }
 
-        if (previous != null) {
-            previous.next = slow.next;
-        }else{
-            list = list.next;
+        if (pre == null) {
+            head = list.next;
+        } else {
+            head = list;
+            pre.next = slow.next;
         }
-        return list;
+
+        return head;
     }
 
     public static Node reverseListAndy(Node list) {
-        if (list == null) return null;
-        Node head = null;
-        Node previous = null;
-        Node current = list;
-        while (current != null) {
-            Node next = current.next;
+        if (list == null || list.next == null) {
+            return list;
+        }
+
+        Node c = list;
+        Node p = null;
+        Node head = null, next;
+
+
+        while (c != null) {
+            next = c.next;
             if (next == null) {
-                head = current;
+                head = c;
             }
-            current.next = previous;
-            previous = current;
-            current = next;
+            c.next = p;
+            p = c;
+            c = next;
 
         }
         return head;
     }
 
     public static Node mergeListAndy(Node la, Node lb) {
-        if(la==null) return lb;
-        if(lb==null) return la;
-        Node head = null;
-        Node q = la;
-        Node p = lb;
-        if (q.data < p.data) {
-            head = q;
-            q = q.next;
-        }else{
-            head = p;
-            p = p.next;
-        }
+        if (la == null) return lb;
+        if (lb == null) return la;
+        Node i = la;
+        Node j = lb;
+        Node k = null;
+        Node result = null;
 
-        Node r = head;
-        while (q != null && p != null) {
-            if (q.data < p.data) {
-                r.next = q;
-                q = q.next;
-            }else{
-                r.next = p;
-                p = p.next;
+        if (i.data < j.data) {
+            k = i;
+            i = i.next;
+        } else {
+            k = j;
+            j = j.next;
+        }
+        result = k;
+
+        while (i != null && j != null) {
+            if (i.data < j.data) {
+                k.next = i;
+                i = i.next;
+            } else {
+                k.next = j;
+                j = j.next;
             }
-
-            r = r.next;
+            k = k.next;
         }
 
-        if (q == null) {
-            r.next = p;
-        }else{
-            r.next = q;
-        }
-
-        return head;
+        if (i == null) k.next = j;
+        if (j == null) k.next = i;
+        return result;
     }
 
     public static Node findMiddleNodeAndy(Node list) {
