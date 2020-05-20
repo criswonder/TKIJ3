@@ -1,10 +1,7 @@
 package com.tmall.wireless.json;
 
 
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by hongyunmhy on 15/9/2.
@@ -31,9 +28,9 @@ public class TestJsonToString {
 
 		testVariableArgs();
 
-		testVariableArgs(null);
+		testVariableArgs("");
 
-		testVariableArgs(null,"abc");
+		testVariableArgs(null, "abc");
 	}
 	public static void testSplit(){
 		String mFileName = "head...tail";

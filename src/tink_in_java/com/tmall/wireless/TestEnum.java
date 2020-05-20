@@ -2,8 +2,6 @@ package com.tmall.wireless;
 
 import java.lang.reflect.InvocationTargetException;
 
-import sun.rmi.runtime.Log;
-
 /**
  * Created by hongyunmhy on 15/8/11.
  */
