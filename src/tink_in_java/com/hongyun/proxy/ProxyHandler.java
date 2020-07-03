@@ -2,6 +2,7 @@ package com.hongyun.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ProxyHandler implements InvocationHandler {
     private Object object;
@@ -15,6 +16,8 @@ public class ProxyHandler implements InvocationHandler {
         System.out.println("Before invoke " + method.getName());
         method.invoke(object, args);
         System.out.println("After invoke " + method.getName());
+
+        ConcurrentHashMap abc = null;
         return null;
     }
 }
