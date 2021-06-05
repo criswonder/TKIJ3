@@ -1,9 +1,8 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven {
-            url "http://mvnrepo.alibaba-inc.com/mvn/repository"
-        }
+        google()
+        jcenter()
     }
     dependencies {
     }
@@ -11,9 +10,8 @@ buildscript {
 
 repositories {
     mavenLocal()
-    maven {
-        url "http://mvnrepo.alibaba-inc.com/mvn/repository"
-    }
+    google()
+    jcenter()
 }
 
 apply plugin: 'java'

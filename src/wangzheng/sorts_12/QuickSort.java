@@ -7,10 +7,12 @@ import utils.PrintUtils;
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int[] testArray = new int[]{6, 11, 3, 19, 8, 2, 9, 4, 10, 5, 7};
+        int[] testArray = {90, 88, 81, 68, 40, 33, 33, 31, 22, 9, 22};
+        int[] expectResult = {9, 22, 22, 31, 33, 33, 40, 68, 81, 88, 90};
 //        QuickSort.quickSort(testArray, testArray.length);
         QuickSort.quickSortAndy(testArray, testArray.length);
         PrintUtils.printArray(testArray);
+        PrintUtils.printArray(expectResult);
 
 //        System.out.println("kTH=" + findKth(testArray, 1));
 //        System.out.println("kTH=" + findKth(testArray, 2));
@@ -19,19 +21,19 @@ public class QuickSort {
 //        System.out.println("kTH=" + findKth(testArray, 5));
     }
 
-    public static int findKth(int[] a, int k) {
-        int pivot = partitionAndy(a, 0, a.length - 1);
-        int i = 0, j = a.length - 1;
-        while (pivot != (a.length - k)) {
-            if (pivot > (a.length - k)) {
-                j = pivot - 1;
-            } else {
-                i = pivot + 1;
-            }
-            pivot = partitionAndy(a, i, j);
-        }
-        return a[pivot];
-    }
+//    public static int findKth(int[] a, int k) {
+//        int pivot = partitionAndy(a, 0, a.length - 1);
+//        int i = 0, j = a.length - 1;
+//        while (pivot != (a.length - k)) {
+//            if (pivot > (a.length - k)) {
+//                j = pivot - 1;
+//            } else {
+//                i = pivot + 1;
+//            }
+//            pivot = partitionAndy(a, i, j);
+//        }
+//        return a[pivot];
+//    }
 
     // 快速排序，a是数组，n表示数组的大小
     public static void quickSort(int[] a, int n) {
@@ -70,31 +72,33 @@ public class QuickSort {
         return i;
     }
 
-
-    //for test purpose
-    public static void quickSortAndy(int[] array, int n) {
-        quickSortInternallyAndy(array, 0, n - 1);
+    public static void quickSortAndy(int[] a, int n) {
+        quickSortAndyInternal(a, 0, n - 1);
     }
 
-    private static void quickSortInternallyAndy(int[] a, int p, int r) {
+    private static void quickSortAndyInternal(int[] a, int p, int r) {
         if (p >= r) return;
         int q = partitionAndy(a, p, r);
-        quickSortInternallyAndy(a, p, q - 1);
-        quickSortInternallyAndy(a, q + 1, r);
+        quickSortInternally(a, p, q - 1);
+        quickSortInternally(a, q + 1, r);
     }
 
     private static int partitionAndy(int[] a, int p, int r) {
         int i = p;
+        int j = p;
         int pivot = a[r];
-        for (int j = p; j < r; j++) {
+        while (j < r) {
             if (a[j] < pivot) {
-                if (i != j) {
-                    int tmp = a[i];
-                    a[i] = a[j];
-                    a[j] = tmp;
+                if (i == j) {
+                    i++;
+                } else {
+                    int tmp = a[j];
+                    a[j] = a[i];
+                    a[i++] = tmp;
                 }
-                i++;
             }
+
+            j++;
         }
 
         int tmp = a[i];
@@ -102,4 +106,6 @@ public class QuickSort {
         a[r] = tmp;
         return i;
     }
+
+
 }

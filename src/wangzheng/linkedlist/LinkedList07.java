@@ -45,13 +45,13 @@ public class LinkedList07 {
     public static void main(String args[]) {
 //        reverseList();
 //
-//        testMergeList();
+        testMergeList();
 //
 //        testCircleList();
 
 //        deleteLinkedListKthNode();
 
-        findMiddleNode();
+//        findMiddleNode();
     }
 
     private static void testCircleList() {

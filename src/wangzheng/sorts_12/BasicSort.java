@@ -1,21 +1,29 @@
 package sorts_12;
 
+import org.junit.Assert;
 import utils.PrintUtils;
 
 public class BasicSort {
     public static void main(String[] args) {
 //        int[] testArray = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
         int[] testArray = {90, 88, 81, 68, 40, 33, 33, 31, 22, 9, 22};
+        int[] expectResult = {9, 22, 22, 31, 33, 33, 40, 68, 81, 88, 90};
 
 
-//        utils.PrintUtils.printArray(testArray);
-        insertSort(testArray, testArray.length);
+//        insertSort(testArray, testArray.length);
+//        PrintUtils.printArray(testArray);
 //        insertionSort(testArray, testArray.length);
-//        bubbleSort(testArray, testArray.length - 1);
+//        Assert.assertArrayEquals(expectResult, testArray);
+
+//        bubbleSort(testArray, testArray.length);
+        bubbleSort2(testArray, testArray.length);
+        PrintUtils.printArray(testArray);
+        Assert.assertArrayEquals(expectResult, testArray);
+
 //        insertSort2(testArray);
 //        insertSort3(testArray);
 //        bubbleSort2(testArray, testArray.length);
-        PrintUtils.printArray(testArray);
+//        PrintUtils.printArray(testArray);
 //        int[] testArray2 = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
 //        utils.PrintUtils.printArray(testArray2);
     }
@@ -29,36 +37,32 @@ public class BasicSort {
      * @param n
      */
     public static void insertSort(int[] a, int n) {
+        if (n <= 1) return;
         for (int i = 1; i < n; i++) {
             int j = i - 1;
-            int insert = a[i];
+            int toInsert = a[i];
             for (; j >= 0; j--) {
-                if (a[j] < insert) {
-                    break;
-                }else{
+                if (toInsert < a[j]) {
                     a[j + 1] = a[j];
-                }
+                } else break;
             }
-
-            a[j+1] = insert;
+            a[j + 1] = toInsert;
         }
     }
 
     public static void bubbleSort2(int[] a, int n) {
-        for (int i = 0; i < n; i++) {
-            boolean flag = false;
-            for (int j = 0; j < n - i - 1; j++) {
+        if (n <= 1) return;
+        for (int i = 0; i < n - 1; i++) {
+            boolean hasChange = false;
+            for (int j = 0; j < n - 1 - i; j++) {
                 if (a[j] > a[j + 1]) {
-                    int tmp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = tmp;
-                    flag = true;
+                    int tmp = a[j + 1];
+                    a[j + 1] = a[j];
+                    a[j] = tmp;
+                    hasChange = true;
                 }
             }
-
-            if (!flag) {
-                break;
-            }
+            if (!hasChange) break;
         }
     }
 

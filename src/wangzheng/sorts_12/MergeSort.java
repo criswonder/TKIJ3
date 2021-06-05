@@ -7,32 +7,35 @@ import utils.PrintUtils;
  */
 public class MergeSort {
     public static void main(String[] args) {
-        int[] testArray = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
+        int[] testArray = {90, 88, 81, 68, 40, 33, 33, 31, 22, 9, 22};
+        int[] expectResult = {9, 22, 22, 31, 33, 33, 40, 68, 81, 88, 90};
 
-        mergeSort(testArray, testArray.length);
+//        mergeSort(testArray, testArray.length);
+//        PrintUtils.printArray(testArray);
 
+
+        mergeSort2(testArray, testArray.length);
         PrintUtils.printArray(testArray);
-
-        int[] testArray2 = {33, 31, 40, 90, 22, 9, 33, 88, 68, 81};
-        mergeSortInternallyAndy(testArray2, 0, testArray2.length - 1);
-
-        PrintUtils.printArray(testArray2);
+        PrintUtils.printArray(expectResult);
     }
 
+    public static void mergeSort2(int[] a, int n) {
+        mergeInternal(a, 0, n - 1);
+    }
 
-    private static void mergeSortInternallyAndy(int[] a, int p, int r) {
-        if (p >= r) return;
+    public static void mergeInternal(int[] a, int p, int r) {
+        if (r >= p) return;
         int q = p + (r - p) / 2;
-        mergeSortInternallyAndy(a, p, q);
-        mergeSortInternallyAndy(a, q + 1, r);
-        mergeAndy(a, p, q, r);
+        mergeInternal(a, p, q);
+        mergeInternal(a, q + 1, r);
+        merge2(a, p, q, r);
     }
 
-    private static void mergeAndy(int[] a, int p, int q, int r) {
+    private static void merge2(int[] a, int p, int q, int r) {
         int i = p;
-        int j = q + 1;
-        int[] tmp = new int[r - p + 1];
+        int j = q;
         int k = 0;
+        int[] tmp = new int[r - p + 1];
         while (i <= q && j <= r) {
             if (a[i] < a[j]) {
                 tmp[k++] = a[i++];
@@ -41,12 +44,15 @@ public class MergeSort {
             }
         }
 
-        if (i <= q) {
+        while (i<=q){
             tmp[k++] = a[i++];
         }
 
-        if(j<=r) tmp[k++] = a[j++];
-        for (int l = 0; l < r - p + 1; l++) {
+        while (j <= r) {
+            tmp[k++] = a[j++];
+        }
+
+        for (int l = 0; l < tmp.length; l++) {
             a[p + l] = tmp[l];
         }
     }
