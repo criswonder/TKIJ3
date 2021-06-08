@@ -14,37 +14,35 @@ public class MergeSort {
 //        PrintUtils.printArray(testArray);
 
 
-        mergeSort2(testArray, testArray.length);
+        mergeSortAndy(testArray, testArray.length);
         PrintUtils.printArray(testArray);
         PrintUtils.printArray(expectResult);
     }
 
-    public static void mergeSort2(int[] a, int n) {
-        mergeInternal(a, 0, n - 1);
+    private static void mergeSortAndy(int[] a, int n) {
+        mergeSortInternallyAndy(a, 0, n - 1);
     }
 
-    public static void mergeInternal(int[] a, int p, int r) {
-        if (r >= p) return;
+    private static void mergeSortInternallyAndy(int[] a, int p, int r) {
+        if (p >= r) return;
         int q = p + (r - p) / 2;
-        mergeInternal(a, p, q);
-        mergeInternal(a, q + 1, r);
-        merge2(a, p, q, r);
+        mergeSortInternallyAndy(a, p, q);
+        mergeSortInternallyAndy(a, q + 1, r);
+        mergeAndy(a, p, q, r);
     }
 
-    private static void merge2(int[] a, int p, int q, int r) {
-        int i = p;
-        int j = q;
-        int k = 0;
+    private static void mergeAndy(int[] a, int p, int q, int r) {
         int[] tmp = new int[r - p + 1];
+        int i = p, j = q + 1, k = 0;
         while (i <= q && j <= r) {
             if (a[i] < a[j]) {
                 tmp[k++] = a[i++];
-            }else{
+            } else {
                 tmp[k++] = a[j++];
             }
         }
 
-        while (i<=q){
+        while (i <= q) {
             tmp[k++] = a[i++];
         }
 

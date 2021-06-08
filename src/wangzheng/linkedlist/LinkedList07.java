@@ -236,34 +236,38 @@ public class LinkedList07 {
     public static Node mergeListAndy(Node la, Node lb) {
         if (la == null) return lb;
         if (lb == null) return la;
-        Node i = la;
-        Node j = lb;
-        Node k = null;
-        Node result = null;
-
-        if (i.data < j.data) {
-            k = i;
-            i = i.next;
+        Node head = null;
+        Node p = la;
+        Node q = lb;
+        if (la.data < lb.data) {
+            head = la;
+            p = la.next;
         } else {
-            k = j;
-            j = j.next;
+            head = lb;
+            q = lb.next;
         }
-        result = k;
+        Node r = head;
 
-        while (i != null && j != null) {
-            if (i.data < j.data) {
-                k.next = i;
-                i = i.next;
-            } else {
-                k.next = j;
-                j = j.next;
+        while (p != null && q != null) {
+            if (p.data < q.data) {
+                r.next = p;
+                p = p.next;
+            }else{
+                r.next = q;
+                q = q.next;
             }
-            k = k.next;
+            r = r.next;
         }
 
-        if (i == null) k.next = j;
-        if (j == null) k.next = i;
-        return result;
+        if (p != null) {
+            r.next = p;
+        }
+
+        if (q != null) {
+            r.next = q;
+        }
+
+        return head;
     }
 
     public static Node findMiddleNodeAndy(Node list) {

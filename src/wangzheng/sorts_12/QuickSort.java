@@ -72,33 +72,31 @@ public class QuickSort {
         return i;
     }
 
-    public static void quickSortAndy(int[] a, int n) {
-        quickSortAndyInternal(a, 0, n - 1);
+    private static void quickSortAndy(int[] a, int n) {
+        quickSortInternallyAndy(a, 0, n - 1);
     }
 
-    private static void quickSortAndyInternal(int[] a, int p, int r) {
+    private static void quickSortInternallyAndy(int[] a, int p, int r) {
         if (p >= r) return;
-        int q = partitionAndy(a, p, r);
-        quickSortInternally(a, p, q - 1);
-        quickSortInternally(a, q + 1, r);
+        int pivot = partitionAndy(a, p, r);
+        quickSortInternallyAndy(a, p, pivot - 1);
+        quickSortInternallyAndy(a, pivot + 1, r);
     }
 
     private static int partitionAndy(int[] a, int p, int r) {
+        int pivot = a[r];
         int i = p;
         int j = p;
-        int pivot = a[r];
-        while (j < r) {
+        for (; j < r; j++) {
             if (a[j] < pivot) {
                 if (i == j) {
                     i++;
                 } else {
-                    int tmp = a[j];
-                    a[j] = a[i];
-                    a[i++] = tmp;
+                    int tmp = a[i];
+                    a[i++] = a[j];
+                    a[j] = tmp;
                 }
             }
-
-            j++;
         }
 
         int tmp = a[i];
